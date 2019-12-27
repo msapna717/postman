@@ -1,0 +1,478 @@
+{
+	"info": {
+		"_postman_id": "cb49789d-3ff2-47b6-ba48-3b921a65ac48",
+		"name": "CollectionLearning",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET",
+			"item": [
+				{
+					"name": "GET Users list",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "410b9528-14a4-4fb1-99be-41d216aa1a58",
+								"exec": [
+									"",
+									"pm.test(\"Verify Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});",
+									"pm.test(\"Verify Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "f3695196-736d-41a1-b61a-df65e5d82863",
+								"exec": [
+									"console.log(\"Hello world....\");",
+									"let urlVar = pm.variables.get(\"url\");",
+									"console.log(\"Value of urlVar is\"+urlVar);",
+									"",
+									"pm.variables.set(\"name\",\"Postman\");",
+									"console.log(pm.variables.get(\"name\"));",
+									"",
+									"let globalVar=pm.globals.get(\"Environment\");",
+									"console.log(globalVar);",
+									"",
+									"pm.environment.set(\"env\",\"Test\");",
+									"console.log(pm.environment.get(\"env\"));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/users?page=2",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"users"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Single User",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "4f479c2f-9b5b-457b-812f-8863f6b36c7d",
+								"exec": [
+									"console.log(\"I am writing in pre-request script sction \")"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/users/2",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ScriptTest",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "62e14a84-e5cb-44f9-92eb-5cf6351828de",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "4f861c69-922f-4cc4-9a73-d9bc5bf2ccaa",
+								"exec": [
+									"pm.test(\"Verify Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});",
+									"pm.test(\"Verify Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"peter@klaven\",\n    \"password\": \"cityslicka\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "googlemap",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://maps.googleapis.com/maps/api/place/nearbysearch/xml?location=-33.8670522,151.1957362&radius=1500&type=supermarket&key=AIzaSyBjGCE3VpLU4lgTqSTDmHmJ2HoELb4Jy1s",
+							"protocol": "https",
+							"host": [
+								"maps",
+								"googleapis",
+								"com"
+							],
+							"path": [
+								"maps",
+								"api",
+								"place",
+								"nearbysearch",
+								"xml"
+							],
+							"query": [
+								{
+									"key": "location",
+									"value": "-33.8670522,151.1957362"
+								},
+								{
+									"key": "radius",
+									"value": "1500"
+								},
+								{
+									"key": "type",
+									"value": "supermarket"
+								},
+								{
+									"key": "key",
+									"value": "AIzaSyBjGCE3VpLU4lgTqSTDmHmJ2HoELb4Jy1s"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "POST",
+			"item": [
+				{
+					"name": "User Registeration",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8c8e83e7-3eab-47d9-9d56-92a1c397bdd6",
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([201,202]);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"{{email}}\",\n    \"password\": \"{{password}}\"\n}"
+						},
+						"url": {
+							"raw": "https://reqres.in/{{endpoint}}",
+							"protocol": "https",
+							"host": [
+								"reqres",
+								"in"
+							],
+							"path": [
+								"{{endpoint}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Registration",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"sydney@fife\",\n    \"password\": \"pistol\"\n}"
+						},
+						"url": {
+							"raw": "https://reqres.in/api/register/preprod",
+							"protocol": "https",
+							"host": [
+								"reqres",
+								"in"
+							],
+							"path": [
+								"api",
+								"register",
+								"preprod"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "APIChainingDemo",
+			"item": [
+				{
+					"name": "ListUsers",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "352579d1-9ee8-4799-a933-3f78b86616a6",
+								"exec": [
+									"",
+									"bodyData=JSON.parse(responseBody);",
+									"key=5;",
+									"value1=bodyData.data[key].id;",
+									"console.log(value1);",
+									"pm.environment.set(\"id\", value1);",
+									"value2=bodyData.data[key].first_name;",
+									"console.log(value2);",
+									"pm.environment.set(\"Firstname\", value2);",
+									"value3=bodyData.data[key].last_name;",
+									"console.log(value3);",
+									"pm.environment.set(\"Lastname\", value3);",
+									"pm.test(\"response header: Content-Type is present and validate value\", function () {",
+									"    pm.response.to.have.header(\"Content-Type\");",
+									"    pm.response.to.be.header(\"Content-Type\",\"application/json; charset=utf-8\");",
+									"   });",
+									"pm.test(\"response header: Content-Encoding is present and validate value\", function () {",
+									"    pm.response.to.have.header(\"Content-Encoding\");",
+									"    pm.response.to.be.header(\"Content-Encoding\",\"gzip\");",
+									"   });",
+									"   pm.test(\"response header: Age is present\", function () {",
+									"    pm.response.to.have.header(\"Age\");",
+									"   });",
+									"     pm.test(\"response body: page is present\", function () {",
+									"     pm.expect(pm.response.text()).to.include(\"page\");",
+									"   });",
+									"    pm.test(\"response body: data is present\", function () {",
+									"     pm.expect(pm.response.text()).to.include(\"data\");",
+									"   });",
+									"   pm.test(\"response body: validate per_page\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.per_page).to.eql(6);",
+									"});",
+									"",
+									"",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://reqres.in/api/users?page=2",
+							"protocol": "https",
+							"host": [
+								"reqres",
+								"in"
+							],
+							"path": [
+								"api",
+								"users"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateUser",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"{{Firstname}}\",\n    \"job\": \"zion resident\"\n}"
+						},
+						"url": {
+							"raw": "https://reqres.in/api/users/2",
+							"protocol": "https",
+							"host": [
+								"reqres",
+								"in"
+							],
+							"path": [
+								"api",
+								"users",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "c6b73bc6-a2be-4f12-8c01-950421434621",
+				"type": "text/javascript",
+				"exec": [
+					"console.log(\"Hello world....\");",
+					"let urlVar = pm.variables.get(\"url\");",
+					"console.log(\"Value of urlVar is: \"+urlVar);",
+					"",
+					"pm.variables.set(\"name\",\"Postman\");",
+					"console.log(pm.variables.get(\"name\"));",
+					"",
+					"let globalVar=pm.globals.get(\"Environment\");",
+					"console.log(globalVar);",
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "474f271d-5902-4b87-97b8-dd33f18f3915",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "f2f80ca2-752e-4dd1-ba9a-bafb915e788c",
+			"key": "url",
+			"value": "https://reqres.in",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
