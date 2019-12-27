@@ -1,0 +1,1369 @@
+{
+	"info": {
+		"_postman_id": "eb870fa7-e699-463c-bf21-21ce909dcb74",
+		"name": "TCE_Multi_Module",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getClientId",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "JSESSIONID=9C7386EB6ECACBB871F6446864968DFE",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/tce-auth-api/0/api/1/sso/clientid",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tce-auth-api",
+						"0",
+						"api",
+						"1",
+						"sso",
+						"clientid"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getClientId_RDS",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://3.94.69.139:8080/tce-auth-api/0/api/1/sso/clientid",
+					"protocol": "http",
+					"host": [
+						"3",
+						"94",
+						"69",
+						"139"
+					],
+					"port": "8080",
+					"path": [
+						"tce-auth-api",
+						"0",
+						"api",
+						"1",
+						"sso",
+						"clientid"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getOrgList",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "JSESSIONID=9C7386EB6ECACBB871F6446864968DFE"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/tce-auth-api/0/api/1/admin/organizations/tes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tce-auth-api",
+						"0",
+						"api",
+						"1",
+						"admin",
+						"organizations",
+						"tes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "oauth token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "32817e26-21b7-497d-93a2-90a1701a06d4",
+						"exec": [
+							"bodyData=JSON.parse(responseBody);\r",
+							"value=bodyData.access_token;\r",
+							"console.log(value);\r",
+							"pm.environment.set(\"access_token\", value);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					},
+					{
+						"key": "Cookie",
+						"value": "43B0AA6594BD8EF6EB2FCD62958F6434",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "organization",
+							"value": "classedge-school",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "tcdeli-lxplm#school.admin",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "classedge",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/tce-auth-api/0/api/1/sso/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tce-auth-api",
+						"0",
+						"api",
+						"1",
+						"sso",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "oauth token_RDS",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "32817e26-21b7-497d-93a2-90a1701a06d4",
+						"exec": [
+							"bodyData=JSON.parse(responseBody);\r",
+							"value=bodyData.access_token;\r",
+							"console.log(value);\r",
+							"pm.environment.set(\"access_token\", value);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					},
+					{
+						"key": "Cookie",
+						"value": "43B0AA6594BD8EF6EB2FCD62958F6434",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "organization",
+							"value": "classedge-school",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "tcdeli-lxplm#school.admin",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "classedge",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://3.94.69.139:8080/tce-auth-api/0/api/1/sso/token",
+					"protocol": "http",
+					"host": [
+						"3",
+						"94",
+						"69",
+						"139"
+					],
+					"port": "8080",
+					"path": [
+						"tce-auth-api",
+						"0",
+						"api",
+						"1",
+						"sso",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User_organizations",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer ddf62921-a9c8-4fbc-902b-45d3bdd6bdae"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/tce-auth-api/1/api/1/admin/organizations",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tce-auth-api",
+						"1",
+						"api",
+						"1",
+						"admin",
+						"organizations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "refreshtoken",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					},
+					{
+						"key": "Cookie",
+						"value": "ctoken=RkNBNjhDNzUwMTFEQjJFNzc0MUFGOUY2QkNENDExQzg6d2ViY2xpZW50; JSESSIONID=5147308314DF7EEB7BDC3F1D268F62A5"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "refresh_token",
+							"type": "text"
+						},
+						{
+							"key": "access_token",
+							"value": "ddf62921-a9c8-4fbc-902b-45d3bdd6bdae",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "refresh_token",
+							"value": "0adafeed-e75e-4639-94d0-93e2b85f418a",
+							"type": "text"
+						},
+						{
+							"key": "organization",
+							"value": "classedge-school",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/tce-auth-api/0/api/1/sso/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tce-auth-api",
+						"0",
+						"api",
+						"1",
+						"sso",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "currentUser",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 249cd2c4-bee1-4a7b-abd9-cf0d2f769666"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/tce-auth-api/1/api/1/admin/current",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tce-auth-api",
+						"1",
+						"api",
+						"1",
+						"admin",
+						"current"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getRolesByOrgId",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer b2111cbd-c347-42f6-8681-00dd3dfe0166"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/tce-auth-api/1/api/1/admin/roles?orgId=org123456789",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tce-auth-api",
+						"1",
+						"api",
+						"1",
+						"admin",
+						"roles"
+					],
+					"query": [
+						{
+							"key": "orgId",
+							"value": "org123456789"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "placeholder",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer a7f664d5-8aa1-4cb9-b515-8b36148d8892"
+					},
+					{
+						"key": "Cookie",
+						"value": "ctoken=NDYyOTUzQ0ZGM0RENTVBRUMxMEJDRTZFRUU1RjAyNDk6d2ViY2xpZW50; JSESSIONID=E97A0A5819CA27B79244C707535D4974"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/tce-auth-api/1/api/1/tool/placeholder",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tce-auth-api",
+						"1",
+						"api",
+						"1",
+						"tool",
+						"placeholder"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createUser",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 843a16c3-00d2-4897-8bcd-12bb5ba3e084"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"organization\": \"org123456789\",\r\n\"password\": \"testuser1123\",\r\n\"role\": \"rle-edf90de4-0179-45fb-945f-0cbed8a02161\",\r\n\"userName\": \"testuser1\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/tce-auth-api/1/api/1/admin/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tce-auth-api",
+						"1",
+						"api",
+						"1",
+						"admin",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createOrganization",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer e79fa6f1-d55f-4d1c-b289-488f1632e977"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"orgId\": \"555555512345\",\r\n\t\"orgName\": \"testorg1\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/tce-auth-api/1/api/1/admin/organization",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tce-auth-api",
+						"1",
+						"api",
+						"1",
+						"admin",
+						"organization"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updatePrivileges",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer f8b85993-80b7-43ef-a60b-16edb57567ef"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://localhost:8080/tce-auth-api/1/api/1/admin/privilege",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tce-auth-api",
+						"1",
+						"api",
+						"1",
+						"admin",
+						"privilege"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "curriculum",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/tce-teach-api/1/api/1/curriculum",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tce-teach-api",
+						"1",
+						"api",
+						"1",
+						"curriculum"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "bookJson",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/tce-teach-api/1/api/1/curriculum/book/book-0741a1a0-ff1b-4c70-97b1-270c484fb326",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tce-teach-api",
+						"1",
+						"api",
+						"1",
+						"curriculum",
+						"book",
+						"book-0741a1a0-ff1b-4c70-97b1-270c484fb326"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "bookJson_RDS",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"url": {
+					"raw": "http://3.94.69.139:8080/tce-teach-api/1/api/1/curriculum/book/book-0741a1a0-ff1b-4c70-97b1-270c484fb326",
+					"protocol": "http",
+					"host": [
+						"3",
+						"94",
+						"69",
+						"139"
+					],
+					"port": "8080",
+					"path": [
+						"tce-teach-api",
+						"1",
+						"api",
+						"1",
+						"curriculum",
+						"book",
+						"book-0741a1a0-ff1b-4c70-97b1-270c484fb326"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "tpand tq's",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/tce-teach-api/1/api/1/serve/tq?ids=tq-e245a5ed-4ff9-4aa0-80cc-5bd3e042eb8b,tq-f54f98ad-1840-4b10-a8e4-be10d9854a80,tq-abc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tce-teach-api",
+						"1",
+						"api",
+						"1",
+						"serve",
+						"tq"
+					],
+					"query": [
+						{
+							"key": "ids",
+							"value": "tq-e245a5ed-4ff9-4aa0-80cc-5bd3e042eb8b,tq-f54f98ad-1840-4b10-a8e4-be10d9854a80,tq-abc"
+						},
+						{
+							"key": "ids",
+							"value": "   ",
+							"disabled": true
+						},
+						{
+							"key": "ids",
+							"value": "tq-abc0123",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "tq's_RDS",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"url": {
+					"raw": "http://3.94.69.139:8080/tce-teach-api/1/api/1/serve/tq?ids=tq-e245a5ed-4ff9-4aa0-80cc-5bd3e042eb8b,tq-f54f98ad-1840-4b10-a8e4-be10d9854a80,tq-abc",
+					"protocol": "http",
+					"host": [
+						"3",
+						"94",
+						"69",
+						"139"
+					],
+					"port": "8080",
+					"path": [
+						"tce-teach-api",
+						"1",
+						"api",
+						"1",
+						"serve",
+						"tq"
+					],
+					"query": [
+						{
+							"key": "ids",
+							"value": "tq-e245a5ed-4ff9-4aa0-80cc-5bd3e042eb8b,tq-f54f98ad-1840-4b10-a8e4-be10d9854a80,tq-abc"
+						},
+						{
+							"key": "ids",
+							"value": "   ",
+							"disabled": true
+						},
+						{
+							"key": "ids",
+							"value": "tq-abc0123",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "lessonplan",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/tce-teach-api/1/api/1/serve/lp/tp-2a3bb879-6152-4f65-8193-20aee182d63a",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tce-teach-api",
+						"1",
+						"api",
+						"1",
+						"serve",
+						"lp",
+						"tp-2a3bb879-6152-4f65-8193-20aee182d63a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "lessonplan_RDS",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"url": {
+					"raw": "http://3.94.69.139:8080/tce-teach-api/1/api/1/serve/lp/tp-2a3bb879-6152-4f65-8193-20aee182d63a",
+					"protocol": "http",
+					"host": [
+						"3",
+						"94",
+						"69",
+						"139"
+					],
+					"port": "8080",
+					"path": [
+						"tce-teach-api",
+						"1",
+						"api",
+						"1",
+						"serve",
+						"lp",
+						"tp-2a3bb879-6152-4f65-8193-20aee182d63a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "questionJson",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/tce-teach-api/1/api/1/serve/question?ids=026B1480-8084-4C53-A7E2-CA3E2B2956EF,337F0227-F4E6-45A8-A474-785650B45E2A,4E150808-DD28-4414-99E4-EB89EE509FDF,AEEFB6AF-37F7-412B-93D9-4656D7998DD7,B4355A9A-6861-48CA-B316-834289EA93B7,C48A21F6-71B4-4264-9287-EE27DB4DEA41,E88CAFBA-A5B2-4CD1-992B-0BE85B4F6E5F,F481BBDB-FFFE-47C4-8B42-43D727713A96",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tce-teach-api",
+						"1",
+						"api",
+						"1",
+						"serve",
+						"question"
+					],
+					"query": [
+						{
+							"key": "ids",
+							"value": "026B1480-8084-4C53-A7E2-CA3E2B2956EF,337F0227-F4E6-45A8-A474-785650B45E2A,4E150808-DD28-4414-99E4-EB89EE509FDF,AEEFB6AF-37F7-412B-93D9-4656D7998DD7,B4355A9A-6861-48CA-B316-834289EA93B7,C48A21F6-71B4-4264-9287-EE27DB4DEA41,E88CAFBA-A5B2-4CD1-992B-0BE85B4F6E5F,F481BBDB-FFFE-47C4-8B42-43D727713A96"
+						},
+						{
+							"key": "ids",
+							"value": "   ",
+							"disabled": true
+						},
+						{
+							"key": "ids",
+							"value": "abc123",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "questionJson_RDS",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"url": {
+					"raw": "http://3.94.69.139:8080/tce-teach-api/1/api/1/serve/question?ids=026B1480-8084-4C53-A7E2-CA3E2B2956EF,337F0227-F4E6-45A8-A474-785650B45E2A,4E150808-DD28-4414-99E4-EB89EE509FDF,AEEFB6AF-37F7-412B-93D9-4656D7998DD7,B4355A9A-6861-48CA-B316-834289EA93B7,C48A21F6-71B4-4264-9287-EE27DB4DEA41,E88CAFBA-A5B2-4CD1-992B-0BE85B4F6E5F,F481BBDB-FFFE-47C4-8B42-43D727713A96",
+					"protocol": "http",
+					"host": [
+						"3",
+						"94",
+						"69",
+						"139"
+					],
+					"port": "8080",
+					"path": [
+						"tce-teach-api",
+						"1",
+						"api",
+						"1",
+						"serve",
+						"question"
+					],
+					"query": [
+						{
+							"key": "ids",
+							"value": "026B1480-8084-4C53-A7E2-CA3E2B2956EF,337F0227-F4E6-45A8-A474-785650B45E2A,4E150808-DD28-4414-99E4-EB89EE509FDF,AEEFB6AF-37F7-412B-93D9-4656D7998DD7,B4355A9A-6861-48CA-B316-834289EA93B7,C48A21F6-71B4-4264-9287-EE27DB4DEA41,E88CAFBA-A5B2-4CD1-992B-0BE85B4F6E5F,F481BBDB-FFFE-47C4-8B42-43D727713A96"
+						},
+						{
+							"key": "ids",
+							"value": "   ",
+							"disabled": true
+						},
+						{
+							"key": "ids",
+							"value": "abc123",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "tp",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/tce-teach-api/1/api/1/serve/tp?ids=tp-a878d564-751f-4f1b-a25b-b58270edd37e,tp-82f82f7c-d47f-4090-a456-074acdb8364e,tp-2a3bb879-6152-4f65-8193-20aee182d63a,tp-0430e6e7-9ca4-49a3-bbb8-ad8fcd8e8029",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tce-teach-api",
+						"1",
+						"api",
+						"1",
+						"serve",
+						"tp"
+					],
+					"query": [
+						{
+							"key": "ids",
+							"value": "tp-a878d564-751f-4f1b-a25b-b58270edd37e,tp-82f82f7c-d47f-4090-a456-074acdb8364e,tp-2a3bb879-6152-4f65-8193-20aee182d63a,tp-0430e6e7-9ca4-49a3-bbb8-ad8fcd8e8029"
+						},
+						{
+							"key": "ids",
+							"value": "  ",
+							"disabled": true
+						},
+						{
+							"key": "ids",
+							"value": "tp-abcd0123",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "tp_RDS",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"url": {
+					"raw": "http://3.94.69.139:8080/tce-teach-api/1/api/1/serve/tp?ids=tp-a878d564-751f-4f1b-a25b-b58270edd37e,tp-82f82f7c-d47f-4090-a456-074acdb8364e,tp-2a3bb879-6152-4f65-8193-20aee182d63a,tp-0430e6e7-9ca4-49a3-bbb8-ad8fcd8e8029",
+					"protocol": "http",
+					"host": [
+						"3",
+						"94",
+						"69",
+						"139"
+					],
+					"port": "8080",
+					"path": [
+						"tce-teach-api",
+						"1",
+						"api",
+						"1",
+						"serve",
+						"tp"
+					],
+					"query": [
+						{
+							"key": "ids",
+							"value": "tp-a878d564-751f-4f1b-a25b-b58270edd37e,tp-82f82f7c-d47f-4090-a456-074acdb8364e,tp-2a3bb879-6152-4f65-8193-20aee182d63a,tp-0430e6e7-9ca4-49a3-bbb8-ad8fcd8e8029"
+						},
+						{
+							"key": "ids",
+							"value": "  ",
+							"disabled": true
+						},
+						{
+							"key": "ids",
+							"value": "tp-abcd0123",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getRecentViews",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/tce-teach-api/1/api/1/nav/recentviews",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tce-teach-api",
+						"1",
+						"api",
+						"1",
+						"nav",
+						"recentviews"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getRecentViews_RDS",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"url": {
+					"raw": "http://3.94.69.139:8080/tce-teach-api/1/api/1/nav/recentviews",
+					"protocol": "http",
+					"host": [
+						"3",
+						"94",
+						"69",
+						"139"
+					],
+					"port": "8080",
+					"path": [
+						"tce-teach-api",
+						"1",
+						"api",
+						"1",
+						"nav",
+						"recentviews"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "fileservelet",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 93606940-4fbe-4f26-8965-b973516d489a",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/tce-teach-api/0/api/content/filerangeservice?encryptedPath=%2Fasset%2Ftata%2F1%2FMaths&fileName=A1BB52DE-C8CA-4D12-A348-761129D824A6/01_maen_t02_tp09_01.mp4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tce-teach-api",
+						"0",
+						"api",
+						"content",
+						"filerangeservice"
+					],
+					"query": [
+						{
+							"key": "encryptedPath",
+							"value": "%2Fasset%2Ftata%2F1%2FMaths"
+						},
+						{
+							"key": "fileName",
+							"value": "A1BB52DE-C8CA-4D12-A348-761129D824A6/01_maen_t02_tp09_01.mp4"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SaveRecentViews",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"warning": "This is a duplicate header and will be overridden by the Authorization header generated by Postman.",
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"data\" : \"[{\\\"accessCount\\\":02,\\\"subjectId\\\":\\\"sub-ae8fce9e-0bfc-4c9c-9562-9d5823788a6b\\\",\\\"subjectTitle\\\":\\\"Mathematics\\\",\\\"division\\\":\\\"A\\\",\\\"lastAccessedOn\\\":1492782475580,\\\"gradeName\\\":\\\"Class 2\\\", \\\"gradeId\\\":\\\"schgrd-0ca61a2e-9501-43a6-b36c-2bd575ab3f05\\\",\\\"className\\\":\\\"Class 2 A\\\",\\\"classId\\\":\\\"cls-aba61a9e-4501-43a6-b36c-2bd375ab3f05\\\",\\\"chapterId\\\":\\\"chp-35f2dc89-a3b2-484d-9654-91e8a88214c0\\\",\\\"topicId\\\":\\\"tp-30a04ccc-2842-48d4-8d2e-ae1032980590\\\"}]\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/tce-teach-api/1/api/1/nav/recentviews",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tce-teach-api",
+						"1",
+						"api",
+						"1",
+						"nav",
+						"recentviews"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SaveRecentViews_RDS",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"warning": "This is a duplicate header and will be overridden by the Authorization header generated by Postman.",
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"data\" : \"[{\\\"accessCount\\\":02,\\\"subjectId\\\":\\\"sub-ae8fce9e-0bfc-4c9c-9562-9d5823788a6b\\\",\\\"subjectTitle\\\":\\\"Mathematics\\\",\\\"division\\\":\\\"A\\\",\\\"lastAccessedOn\\\":1492782475580,\\\"gradeName\\\":\\\"Class 2\\\", \\\"gradeId\\\":\\\"schgrd-0ca61a2e-9501-43a6-b36c-2bd575ab3f05\\\",\\\"className\\\":\\\"Class 2 A\\\",\\\"classId\\\":\\\"cls-aba61a9e-4501-43a6-b36c-2bd375ab3f05\\\",\\\"chapterId\\\":\\\"chp-35f2dc89-a3b2-484d-9654-91e8a88214c0\\\",\\\"topicId\\\":\\\"tp-30a04ccc-2842-48d4-8d2e-ae1032980590\\\"}]\"\r\n}"
+				},
+				"url": {
+					"raw": "http://3.94.69.139:8080/tce-teach-api/1/api/1/nav/recentviews",
+					"protocol": "http",
+					"host": [
+						"3",
+						"94",
+						"69",
+						"139"
+					],
+					"port": "8080",
+					"path": [
+						"tce-teach-api",
+						"1",
+						"api",
+						"1",
+						"nav",
+						"recentviews"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateRecentViews",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"data\" : \"[{\\\"accessCount\\\":04,\\\"subjectId\\\":\\\"sub-ae8fce9e-0bfc-4c9c-9562-9d5823788a6b\\\",\\\"subjectTitle\\\":\\\"Mathematics\\\",\\\"division\\\":\\\"A\\\",\\\"lastAccessedOn\\\":1492782475580,\\\"gradeName\\\":\\\"Class 2\\\", \\\"gradeId\\\":\\\"schgrd-0ca61a2e-9501-43a6-b36c-2bd575ab3f05\\\",\\\"className\\\":\\\"Class 2 A\\\",\\\"classId\\\":\\\"cls-aba61a9e-4501-43a6-b36c-2bd375ab3f05\\\",\\\"chapterId\\\":\\\"chp-35f2dc89-a3b2-484d-9654-91e8a88214c0\\\",\\\"topicId\\\":\\\"tp-30a04ccc-2842-48d4-8d2e-ae1032980590\\\"}]\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/tce-teach-api/1/api/1/nav/recentviews?",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tce-teach-api",
+						"1",
+						"api",
+						"1",
+						"nav",
+						"recentviews"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateRecentViews_RDS",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"data\" : \"[{\\\"accessCount\\\":04,\\\"subjectId\\\":\\\"sub-ae8fce9e-0bfc-4c9c-9562-9d5823788a6b\\\",\\\"subjectTitle\\\":\\\"Mathematics\\\",\\\"division\\\":\\\"A\\\",\\\"lastAccessedOn\\\":1492782475580,\\\"gradeName\\\":\\\"Class 2\\\", \\\"gradeId\\\":\\\"schgrd-0ca61a2e-9501-43a6-b36c-2bd575ab3f05\\\",\\\"className\\\":\\\"Class 2 A\\\",\\\"classId\\\":\\\"cls-aba61a9e-4501-43a6-b36c-2bd375ab3f05\\\",\\\"chapterId\\\":\\\"chp-35f2dc89-a3b2-484d-9654-91e8a88214c0\\\",\\\"topicId\\\":\\\"tp-30a04ccc-2842-48d4-8d2e-ae1032980590\\\"}]\"\r\n}"
+				},
+				"url": {
+					"raw": "http://3.94.69.139:8080/tce-teach-api/1/api/1/nav/recentviews?",
+					"protocol": "http",
+					"host": [
+						"3",
+						"94",
+						"69",
+						"139"
+					],
+					"port": "8080",
+					"path": [
+						"tce-teach-api",
+						"1",
+						"api",
+						"1",
+						"nav",
+						"recentviews"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "VtpAssets",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/tce-teach-api/1/api/1/serve/asset?ids=04015DF8-CD99-42CE-93F9-EA9C61DDB51C_hi&ids=03D95DDB-8148-49DE-B7E4-601361CBD963_gu",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tce-teach-api",
+						"1",
+						"api",
+						"1",
+						"serve",
+						"asset"
+					],
+					"query": [
+						{
+							"key": "ids",
+							"value": "04015DF8-CD99-42CE-93F9-EA9C61DDB51C_hi"
+						},
+						{
+							"key": "ids",
+							"value": "03D95DDB-8148-49DE-B7E4-601361CBD963_gu"
+						},
+						{
+							"key": "ids",
+							"value": "abc",
+							"disabled": true
+						},
+						{
+							"key": "ids",
+							"value": "    ",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "VtpAssets_RDS",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"url": {
+					"raw": "http://3.94.69.139:8080/tce-teach-api/1/api/1/serve/asset?ids=04015DF8-CD99-42CE-93F9-EA9C61DDB51C_hi&ids=03D95DDB-8148-49DE-B7E4-601361CBD963_gu",
+					"protocol": "http",
+					"host": [
+						"3",
+						"94",
+						"69",
+						"139"
+					],
+					"port": "8080",
+					"path": [
+						"tce-teach-api",
+						"1",
+						"api",
+						"1",
+						"serve",
+						"asset"
+					],
+					"query": [
+						{
+							"key": "ids",
+							"value": "04015DF8-CD99-42CE-93F9-EA9C61DDB51C_hi"
+						},
+						{
+							"key": "ids",
+							"value": "03D95DDB-8148-49DE-B7E4-601361CBD963_gu"
+						},
+						{
+							"key": "ids",
+							"value": "abc",
+							"disabled": true
+						},
+						{
+							"key": "ids",
+							"value": "    ",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

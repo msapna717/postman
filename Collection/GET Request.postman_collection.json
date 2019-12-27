@@ -1,0 +1,50 @@
+{
+	"info": {
+		"_postman_id": "166f9280-a66b-4ac6-b9c4-efd422011f91",
+		"name": "GET Request",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "https://reqres.in/api/users/2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ab7a8e5c-abd4-4208-80d4-2054892a46f4",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('Some test name', function () {",
+							"})"
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://reqres.in/api/users/2",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

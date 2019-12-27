@@ -1,0 +1,517 @@
+{
+	"info": {
+		"_postman_id": "41abdc28-6d87-492c-8f86-77aec4356790",
+		"name": "TCE_Benchmark",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "user-controller",
+			"item": [
+				{
+					"name": "POST",
+					"item": [
+						{
+							"name": "TCE_SinginAPI username/password",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "bbddf381-22f7-4755-ba57-f69e573a2c20",
+										"exec": [
+											"bodyData=JSON.parse(responseBody);",
+											"value=bodyData.responseData.token;",
+											"console.log(value);",
+											"pm.environment.set(\"authToken\", value);",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"pm.test(\"Successful POST request\", function () {",
+											"    pm.expect(pm.response.code).to.be.oneOf([200,201,202]);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "c35c4245-7202-440d-84d8-94abbd493e55",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n \"password\": \"ClassEdge\",\n \"userName\": \"harinder@kumar\"\n}"
+								},
+								"url": {
+									"raw": "{{baseurl}}/api/users/sign-in",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"sign-in"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "TCE_SinginAPI with PIN",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "5b77bef0-2cb0-4bec-89a4-d7f927ce0712",
+										"exec": [
+											"bodyData=JSON.parse(responseBody);",
+											"value=bodyData.responseData.accessToken;",
+											"console.log(value);",
+											"pm.environment.set(\"authToken\", value);",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"pm.test(\"Successful POST request\", function () {",
+											"    pm.expect(pm.response.code).to.be.oneOf([200,201,202]);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "fcac89f7-990f-4f21-8582-e144c3505174",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"pin\": \"54321\"\n}"
+								},
+								"url": {
+									"raw": "{{baseurl}}/api/users/sign-in",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"sign-in"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "TCE_ChangePassword",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"password\": \"Sapna@567\"\n}"
+								},
+								"url": {
+									"raw": "{{baseurl}}/api/users/changePassword",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"changePassword"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "TCE_SignUP",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"hemant@ymail.com\",\n  \"firstName\": \"hemant\",\n  \"lastName\": \"kumar\",\n  \"mobileNo\": \"2010009004\",\n  \"roleRequest\": [\n    {\n      \"orgId\": \"tcdeli-lxplm\",\n      \"roles\": [\n        \"role_1\"\n      ]\n    }\n  ],\n  \"title\": \"Mr\"\n}"
+								},
+								"url": {
+									"raw": "{{baseurl}}/api/users/sign-up",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"sign-up"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "TCE_SavePin or AssignPin API",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "78b4371c-cf96-432e-9916-6c87774be7f5",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"pin\": \"54321\"\n}"
+								},
+								"url": {
+									"raw": "{{baseurl}}/api/users/savePin",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"savePin"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "GET",
+					"item": [
+						{
+							"name": "TCE_Dashboard",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{baseurl}}/api/users/getDashboardInfo",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"getDashboardInfo"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Dashboard",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseurl}}/api/users/getDashboardInfo",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"getDashboardInfo"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "TCE_GeneratePin",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{baseurl}}/api/users/generatePin",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"generatePin"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		},
+		{
+			"name": "content-controller",
+			"item": [
+				{
+					"name": "API to display curriculum",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "35b7b9d2-738c-451c-9ef7-97fcb2c539a8",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseurl}}/api/content/curriculum",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"api",
+								"content",
+								"curriculum"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "API to display topics ",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "fbdcfff4-8c99-46f4-ad9e-c4e510b8c6fb",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "ce64d0b6-e816-469c-a4ef-8b11642ce370",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseurl}}/api/content/curriculum/book/chapters/chp-0819664f-4002-4add-ba98-ce681d5fe9d3/topics",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"api",
+								"content",
+								"curriculum",
+								"book",
+								"chapters",
+								"chp-0819664f-4002-4add-ba98-ce681d5fe9d3",
+								"topics"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

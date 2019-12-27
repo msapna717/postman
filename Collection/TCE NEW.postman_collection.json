@@ -1,0 +1,135 @@
+{
+	"info": {
+		"_postman_id": "b2b56735-b421-4732-a9fe-7f4dc78c707f",
+		"name": "TCE NEW",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "sign-up",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"gopi@ymail.com\",\n  \"firstName\": \"gopi1234\",\n  \"lastName\": \"kaushik1234\",\n  \"mobileNo\": \"2014643341\",\n  \"roleRequest\": [\n    {\n      \"orgId\": \"tcdeli-lxplm\",\n      \"roles\": [\n        \"role_1\"\n      ]\n    }\n  ],\n  \"title\": \"Mr\"\n}"
+				},
+				"url": {
+					"raw": "{{tceBaseUrl}}users/sign-up",
+					"host": [
+						"{{tceBaseUrl}}users"
+					],
+					"path": [
+						"sign-up"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "sign in",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "db09163b-1f57-4e8e-8914-1d3aa712fc4a",
+						"exec": [
+							"bodyData=JSON.parse(responseBody);",
+							"value=bodyData.responseData.token;",
+							"console.log(value);",
+							"pm.environment.set(\"authToken\", value);",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201,202]);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"password\": \"Sapna@567\",\n  \"userName\": \"sapna@mishra\"\n}"
+				},
+				"url": {
+					"raw": "{{tceBaseUrl}}users/sign-in",
+					"host": [
+						"{{tceBaseUrl}}users"
+					],
+					"path": [
+						"sign-in"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "sign in pin",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "654dfe13-829a-43d0-86ef-2cc65c61df58",
+						"exec": [
+							"bodyData=JSON.parse(responseBody);",
+							"value=bodyData.responseData.token;",
+							"console.log(value);",
+							"pm.environment.set(\"authToken\", value);",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201,202]);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"pin\": \"12346\"\n}"
+				},
+				"url": {
+					"raw": "{{tceBaseUrl}}users/sign-in",
+					"host": [
+						"{{tceBaseUrl}}users"
+					],
+					"path": [
+						"sign-in"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

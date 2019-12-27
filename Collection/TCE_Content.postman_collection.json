@@ -1,0 +1,848 @@
+{
+	"info": {
+		"_postman_id": "97ce6b0c-3110-4eaa-84ff-11c56d09ea9f",
+		"name": "TCE_Content",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "content-controller",
+			"item": [
+				{
+					"name": "curriculum getGradesAndSubjects",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "35b7b9d2-738c-451c-9ef7-97fcb2c539a8",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseUrlContent}}/content/api/v1/curriculum",
+							"host": [
+								"{{baseUrlContent}}"
+							],
+							"path": [
+								"content",
+								"api",
+								"v1",
+								"curriculum"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getBookContent",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrlContent}}/content/api/v1/curriculum/book/book-58964e2f-c48b-44d8-a4ed-9db38e89e4c7",
+							"host": [
+								"{{baseUrlContent}}"
+							],
+							"path": [
+								"content",
+								"api",
+								"v1",
+								"curriculum",
+								"book",
+								"book-58964e2f-c48b-44d8-a4ed-9db38e89e4c7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getResourceFromPath",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrlContent}}/content/api/v1/filerangeservice?encryptedPath=%2Ftp%2Ftata%2F1%2FMaths%2Ftp-e245a5ed-4ff9-4aa0-80cc-5bd3e042eb8b%2Finternal%2Fquiz&fileName=qz_01maen_01_img02b.png",
+							"host": [
+								"{{baseUrlContent}}"
+							],
+							"path": [
+								"content",
+								"api",
+								"v1",
+								"filerangeservice"
+							],
+							"query": [
+								{
+									"key": "encryptedPath",
+									"value": "%2Ftp%2Ftata%2F1%2FMaths%2Ftp-e245a5ed-4ff9-4aa0-80cc-5bd3e042eb8b%2Finternal%2Fquiz"
+								},
+								{
+									"key": "fileName",
+									"value": "qz_01maen_01_img02b.png"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": " getRecentViews",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseUrlContent}}/content/api/v1/nav/recentviews",
+							"host": [
+								"{{baseUrlContent}}"
+							],
+							"path": [
+								"content",
+								"api",
+								"v1",
+								"nav",
+								"recentviews"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "recentviews saveData",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"data\": \"[{\\\"accessCount\\\":40,\\\"subjectId\\\":\\\"sub-ae8fce9e-0bfc-4c9c-9562-9d5823788a6b\\\",\\\"subjectTitle\\\":\\\"Mathematics\\\",\\\"division\\\":\\\"A\\\",\\\"lastAccessedOn\\\":1492782475580,\\\"gradeName\\\":\\\"Class 2\\\", \\\"gradeId\\\":\\\"schgrd-0ca61a2e-9501-43a6-b36c-2bd575ab3f05\\\",\\\"className\\\":\\\"Class 2 A\\\",\\\"classId\\\":\\\"cls-aba61a9e-4501-43a6-b36c-2bd375ab3f05\\\",\\\"chapterId\\\":\\\"chp-35f2dc89-a3b2-484d-9654-91e8a88214c0\\\",\\\"topicId\\\":\\\"tp-30a04ccc-2842-48d4-8d2e-ae1032980590\\\"}]\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrlContent}}/content/api/v1/nav/recentviews",
+							"host": [
+								"{{baseUrlContent}}"
+							],
+							"path": [
+								"content",
+								"api",
+								"v1",
+								"nav",
+								"recentviews"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "recentviews updateData",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"data\": \"[{\\\"accessCount\\\":40,\\\"subjectId\\\":\\\"sub-ae8fce9e-0bfc-4c9c-9562-9d5823788a6b\\\",\\\"subjectTitle\\\":\\\"Mathematics\\\",\\\"division\\\":\\\"A\\\",\\\"lastAccessedOn\\\":1492782475580,\\\"gradeName\\\":\\\"Class 2\\\", \\\"gradeId\\\":\\\"schgrd-0ca61a2e-9501-43a6-b36c-2bd575ab3f05\\\",\\\"className\\\":\\\"Class 2 A\\\",\\\"classId\\\":\\\"cls-aba61a9e-4501-43a6-b36c-2bd375ab3f05\\\",\\\"chapterId\\\":\\\"chp-35f2dc89-a3b2-484d-9654-91e8a88214c0\\\",\\\"topicId\\\":\\\"tp-30a04ccc-2842-48d4-8d2e-ae1032980590\\\"}]\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrlContent}}/content/api/v1/nav/recentviews",
+							"host": [
+								"{{baseUrlContent}}"
+							],
+							"path": [
+								"content",
+								"api",
+								"v1",
+								"nav",
+								"recentviews"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getVTPAssets",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseUrlContent}}/content/api/v1/serve/asset?ids=03D95DDB-8148-49DE-B7E4-601361CBD963_gu&ids=04015DF8-CD99-42CE-93F9-EA9C61DDB51C_hi",
+							"host": [
+								"{{baseUrlContent}}"
+							],
+							"path": [
+								"content",
+								"api",
+								"v1",
+								"serve",
+								"asset"
+							],
+							"query": [
+								{
+									"key": "ids",
+									"value": "03D95DDB-8148-49DE-B7E4-601361CBD963_gu"
+								},
+								{
+									"key": "ids",
+									"value": "04015DF8-CD99-42CE-93F9-EA9C61DDB51C_hi"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getLessonPlanBytpId",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrlContent}}/content/api/v1/serve/lp/tp-fae3f9c8-a766-4933-aca8-e8c28ccfc4e4",
+							"host": [
+								"{{baseUrlContent}}"
+							],
+							"path": [
+								"content",
+								"api",
+								"v1",
+								"serve",
+								"lp",
+								"tp-fae3f9c8-a766-4933-aca8-e8c28ccfc4e4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": " getQuestionDetails",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrlContent}}/content/api/v1/serve/question?ids=64C147BE-ADD7-4595-9603-CA9C45EC950F&ids=8162DC51-38A3-46D0-8BC3-00D8E075B759&ids=D2BC49C0-268C-44AC-B575-C78E7D7E3522&ids=D5260990-7789-4C5B-81DB-1C05928F9978",
+							"host": [
+								"{{baseUrlContent}}"
+							],
+							"path": [
+								"content",
+								"api",
+								"v1",
+								"serve",
+								"question"
+							],
+							"query": [
+								{
+									"key": "ids",
+									"value": "64C147BE-ADD7-4595-9603-CA9C45EC950F"
+								},
+								{
+									"key": "ids",
+									"value": "8162DC51-38A3-46D0-8BC3-00D8E075B759"
+								},
+								{
+									"key": "ids",
+									"value": "D2BC49C0-268C-44AC-B575-C78E7D7E3522"
+								},
+								{
+									"key": "ids",
+									"value": "D5260990-7789-4C5B-81DB-1C05928F9978"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getTopicAssets TP",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrlContent}}/content/api/v1/serve/tp?ids=&ids=tp-eed36411-2c49-4ef4-a21b-73cf93e74043",
+							"host": [
+								"{{baseUrlContent}}"
+							],
+							"path": [
+								"content",
+								"api",
+								"v1",
+								"serve",
+								"tp"
+							],
+							"query": [
+								{
+									"key": "ids",
+									"value": ""
+								},
+								{
+									"key": "ids",
+									"value": "tp-eed36411-2c49-4ef4-a21b-73cf93e74043"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getTopicAssets TQ",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "fbdcfff4-8c99-46f4-ad9e-c4e510b8c6fb",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "ce64d0b6-e816-469c-a4ef-8b11642ce370",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseUrlContent}}/content/api/v1/serve/tq?ids=tq-e245a5ed-4ff9-4aa0-80cc-5bd3e042eb8b&ids=tq-f54f98ad-1840-4b10-a8e4-be10d9854a80",
+							"host": [
+								"{{baseUrlContent}}"
+							],
+							"path": [
+								"content",
+								"api",
+								"v1",
+								"serve",
+								"tq"
+							],
+							"query": [
+								{
+									"key": "ids",
+									"value": "tq-e245a5ed-4ff9-4aa0-80cc-5bd3e042eb8b"
+								},
+								{
+									"key": "ids",
+									"value": "tq-f54f98ad-1840-4b10-a8e4-be10d9854a80"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Whiteboard controller",
+			"item": [
+				{
+					"name": "getWhiteboard",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrlContent}}/content/api/v1/user/whiteboard?chapterId=chp-f7c512d2-0aa2-4281-b2fc-0e1b8d2fef6c&divId=Division A&gradeId=grd-bb851b0a-2b42-4ed7-b6b0-5fd165dcefd3&subId=sub-ae8fce9e-0bfc-4c9c-9562-9d5823788a6b&tpId=tp-eed36411-2c49-4ef4-a21b-73cf93e74043&wbTitle=wbTest",
+							"host": [
+								"{{baseUrlContent}}"
+							],
+							"path": [
+								"content",
+								"api",
+								"v1",
+								"user",
+								"whiteboard"
+							],
+							"query": [
+								{
+									"key": "chapterId",
+									"value": "chp-f7c512d2-0aa2-4281-b2fc-0e1b8d2fef6c"
+								},
+								{
+									"key": "divId",
+									"value": "Division A"
+								},
+								{
+									"key": "gradeId",
+									"value": "grd-bb851b0a-2b42-4ed7-b6b0-5fd165dcefd3"
+								},
+								{
+									"key": "subId",
+									"value": "sub-ae8fce9e-0bfc-4c9c-9562-9d5823788a6b"
+								},
+								{
+									"key": "tpId",
+									"value": "tp-eed36411-2c49-4ef4-a21b-73cf93e74043"
+								},
+								{
+									"key": "wbTitle",
+									"value": "wbTest"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "getWhiteboard",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{baseUrlContent}}/content/api/v1/user/whiteboard?chapterId=chp-f7c512d2-0aa2-4281-b2fc-0e1b8d2fef6c&divId=Division A&gradeId=grd-bb851b0a-2b42-4ed7-b6b0-5fd165dcefd3&subId=sub-ae8fce9e-0bfc-4c9c-9562-9d5823788a6b&tpId=tp-eed36411-2c49-4ef4-a21b-73cf93e74043&wbTitle=wbTest",
+									"host": [
+										"{{baseUrlContent}}"
+									],
+									"path": [
+										"content",
+										"api",
+										"v1",
+										"user",
+										"whiteboard"
+									],
+									"query": [
+										{
+											"key": "chapterId",
+											"value": "chp-f7c512d2-0aa2-4281-b2fc-0e1b8d2fef6c"
+										},
+										{
+											"key": "divId",
+											"value": "Division A"
+										},
+										{
+											"key": "gradeId",
+											"value": "grd-bb851b0a-2b42-4ed7-b6b0-5fd165dcefd3"
+										},
+										{
+											"key": "subId",
+											"value": "sub-ae8fce9e-0bfc-4c9c-9562-9d5823788a6b"
+										},
+										{
+											"key": "tpId",
+											"value": "tp-eed36411-2c49-4ef4-a21b-73cf93e74043"
+										},
+										{
+											"key": "wbTitle",
+											"value": "wbTest"
+										}
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "POST, GET, OPTIONS, PUT"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Max-Age",
+									"value": "1728000"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2019 06:56:55 GMT"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "getWhiteboard negative",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrlContent}}/content/api/v1/user/whiteboard?chapterId=chp1&divId=Division A&gradeId=grd-bb851b0a-2b42-4ed7-b6b0-5fd165dcefd3&subId=sub1&tpId=tp1&wbTitle=titel1",
+							"host": [
+								"{{baseUrlContent}}"
+							],
+							"path": [
+								"content",
+								"api",
+								"v1",
+								"user",
+								"whiteboard"
+							],
+							"query": [
+								{
+									"key": "chapterId",
+									"value": "chp1"
+								},
+								{
+									"key": "divId",
+									"value": "Division A"
+								},
+								{
+									"key": "gradeId",
+									"value": "grd-bb851b0a-2b42-4ed7-b6b0-5fd165dcefd3"
+								},
+								{
+									"key": "subId",
+									"value": "sub1"
+								},
+								{
+									"key": "tpId",
+									"value": "tp1"
+								},
+								{
+									"key": "wbTitle",
+									"value": "titel1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "saveWhiteboard",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ugeneratedWhiteboardRequest\": {\n    \"chapterId\": \"chp-f7c512d2-0aa2-4281-b2fc-0e1b8d2fef6c\",\n    \"divId\": \"\",\n    \"gradeId\": \"grd-bb851b0a-2b42-4ed7-b6b0-5fd165dcefd3\",\n    \"subId\": \"sub-ae8fce9e-0bfc-4c9c-9562-9d5823788a6b\",\n    \"tpId\": \"tp-eed36411-2c49-4ef4-a21b-73cf93e74043\",\n    \"wbTitle\": \"wbTestNull\"\n  },\n  \"whiteBoardContent\": \"Hi this is to test save whiteboard\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrlContent}}/content/api/v1/user/whiteboard",
+							"host": [
+								"{{baseUrlContent}}"
+							],
+							"path": [
+								"content",
+								"api",
+								"v1",
+								"user",
+								"whiteboard"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "saveWhiteboard negative",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ugeneratedWhiteboardRequest\": {\n    \"chapterId\": null,\n    \"divId\": \"Division A\",\n    \"gradeId\": \"grd-bb851b0a-2b42-4ed7-b6b0-5fd165dcefd3\",\n    \"subId\": null,\n    \"tpId\": null,\n    \"wbTitle\": \"null retest\"\n  },\n  \"whiteBoardContent\": \"null value test\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrlContent}}/content/api/v1/user/whiteboard",
+							"host": [
+								"{{baseUrlContent}}"
+							],
+							"path": [
+								"content",
+								"api",
+								"v1",
+								"user",
+								"whiteboard"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

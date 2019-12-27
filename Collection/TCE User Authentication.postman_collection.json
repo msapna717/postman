@@ -1,0 +1,577 @@
+{
+	"info": {
+		"_postman_id": "60625f4d-bb63-4bb0-bc0a-ab8a4b0bb2d2",
+		"name": "TCE User Authentication",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "user-controller",
+			"item": [
+				{
+					"name": "POST",
+					"item": [
+						{
+							"name": "TCE_SinginAPI username/password",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "fad0af75-b1b0-4d48-9517-733dcd92560c",
+										"exec": [
+											"bodyData1=JSON.parse(responseBody);",
+											"value1=bodyData1.responseData.authentication.access_token;",
+											"console.log(value1);",
+											"pm.environment.set(\"access_token\", value1);",
+											"bodyData2=JSON.parse(responseBody);",
+											"value2=bodyData2.responseData.authentication.refresh_token;",
+											"console.log(value2);",
+											"pm.environment.set(\"refresh_token\", value2);",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"pm.test(\"Successful POST request\", function () {",
+											"    pm.expect(pm.response.code).to.be.oneOf([200,201,202]);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "15864252-4150-4e0d-95ce-1f5eb6472139",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "clientId",
+										"value": "QATestClient",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n \"password\": \"Sapna@567\",\n \"userName\": \"sapna@mishra\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrlAuth}}/user/api/v1/sign-in",
+									"host": [
+										"{{baseUrlAuth}}"
+									],
+									"path": [
+										"user",
+										"api",
+										"v1",
+										"sign-in"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "TCE_SinginAPI with PIN",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "5f0d058f-85db-4529-9357-d61404de72b9",
+										"exec": [
+											"bodyData1=JSON.parse(responseBody);",
+											"value1=bodyData1.responseData.authentication.access_token;",
+											"console.log(value1);",
+											"pm.environment.set(\"access_token\", value1);",
+											"bodyData2=JSON.parse(responseBody);",
+											"value2=bodyData2.responseData.authentication.refresh_token;",
+											"console.log(value2);",
+											"pm.environment.set(\"refresh_token\", value2);",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"pm.test(\"Successful POST request\", function () {",
+											"    pm.expect(pm.response.code).to.be.oneOf([200,201,202]);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "80023d21-694c-48a6-99d3-aaaf9c86dd98",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "clientId",
+										"value": "QATestClient",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"pin\": \"54321\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrlAuth}}/user/api/v1/sign-in",
+									"host": [
+										"{{baseUrlAuth}}"
+									],
+									"path": [
+										"user",
+										"api",
+										"v1",
+										"sign-in"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "TCE_ChangePassword",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "7005d05a-ca47-42b1-b9bb-516075ed7e51",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"password\": \"Sapna@567\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrlAuth}}/user/api/v1/changePassword",
+									"host": [
+										"{{baseUrlAuth}}"
+									],
+									"path": [
+										"user",
+										"api",
+										"v1",
+										"changePassword"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "TCE_SignUP",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"testuser110@gmail.com\",\n  \"firstName\": \"testuser110\",\n  \"lastName\": \"tataclassedge.com\",\n  \"mobileNo\": \"8765432110\",\n  \"roleRequest\": [\n    {\n      \"orgId\": \"tcdeli-lxplm\",\n      \"roles\": [\n        \"role_1\"\n      ]\n    }\n  ],\n  \"title\": \"Mr\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrlAuth}}/user/api/v1/sign-up",
+									"host": [
+										"{{baseUrlAuth}}"
+									],
+									"path": [
+										"user",
+										"api",
+										"v1",
+										"sign-up"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "TCE_SavePin or AssignPin API",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "78b4371c-cf96-432e-9916-6c87774be7f5",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"pin\": \"29668\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrlAuth}}/user/api/v1/savePin",
+									"host": [
+										"{{baseUrlAuth}}"
+									],
+									"path": [
+										"user",
+										"api",
+										"v1",
+										"savePin"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "GET",
+					"item": [
+						{
+							"name": "TCE_GeneratePin",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{baseUrlAuth}}/user/api/v1/generatePin",
+									"host": [
+										"{{baseUrlAuth}}"
+									],
+									"path": [
+										"user",
+										"api",
+										"v1",
+										"generatePin"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "TCE_RefreshToken",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "refresh_token",
+										"value": "{{refresh_token}}",
+										"type": "text"
+									},
+									{
+										"key": "clientId",
+										"value": "QATestClient",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{baseUrlAuth}}/user/api/v1/refreshToken",
+									"host": [
+										"{{baseUrlAuth}}"
+									],
+									"path": [
+										"user",
+										"api",
+										"v1",
+										"refreshToken"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "registerClient",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "clientId",
+										"value": "",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{baseUrlAuth}}/user/api/v1/registerClient",
+									"host": [
+										"{{baseUrlAuth}}"
+									],
+									"path": [
+										"user",
+										"api",
+										"v1",
+										"registerClient"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Logout revokeToken",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseUrlAuth}}/user/api/v1/logout",
+							"host": [
+								"{{baseUrlAuth}}"
+							],
+							"path": [
+								"user",
+								"api",
+								"v1",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "AWS APIs",
+			"item": [
+				{
+					"name": "signup",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"testuser31@gmail.com\",\n  \"firstName\": \"testuser31\",\n  \"lastName\": \"tataclassedge.com\",\n  \"mobileNo\": \"8765432131\",\n  \"roleRequest\": [\n    {\n      \"orgId\": \"tcdeli-lxplm\",\n      \"roles\": [\n        \"role_1\"\n      ]\n    }\n  ],\n  \"title\": \"Mr\"\n}"
+						},
+						"url": {
+							"raw": "{{awsTceBase}}/tce_user_authentication/user/api/v1/sign-up",
+							"host": [
+								"{{awsTceBase}}"
+							],
+							"path": [
+								"tce_user_authentication",
+								"user",
+								"api",
+								"v1",
+								"sign-up"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TCE_SinginAPI username/password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e1530bde-be66-4294-81f4-6c2044dcb2b2",
+								"exec": [
+									"bodyData1=JSON.parse(responseBody);",
+									"value1=bodyData1.responseData.authentication.access_token;",
+									"console.log(value1);",
+									"pm.environment.set(\"access_token\", value1);",
+									"bodyData2=JSON.parse(responseBody);",
+									"value2=bodyData2.responseData.authentication.refresh_token;",
+									"console.log(value2);",
+									"pm.environment.set(\"refresh_token\", value2);",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200,201,202]);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "a94e5f95-c567-410a-8a04-03af6b2d60fb",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "clientId",
+								"type": "text",
+								"value": "QATestClient"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n \"password\": \"ClassEdge\",\n \"userName\": \"testuser31@tataclassedge.com\"\n}"
+						},
+						"url": {
+							"raw": "{{awsTceBase}}/tce_user_authentication/user/api/v1/sign-in",
+							"host": [
+								"{{awsTceBase}}"
+							],
+							"path": [
+								"tce_user_authentication",
+								"user",
+								"api",
+								"v1",
+								"sign-in"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

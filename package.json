@@ -1,0 +1,16 @@
+{
+  "name": "postman",
+  "version": "1.0.0",
+  "description": "newman jenkins postman",
+  "directories": {
+    "test":"tests"
+  },
+  "scripts": {
+    "api-test": "npm run https://www.getpostman.com/collections/e9f628fdd8c6b391d1f1 --reporters=cli,htmlextra"
+  },
+  "author": "sapna mishra",
+  "license": "ISC",
+  "dependencies": {
+    "newman": "^4.5.7"
+  }
+}

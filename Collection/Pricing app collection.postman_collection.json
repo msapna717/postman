@@ -1,0 +1,77 @@
+{
+	"info": {
+		"_postman_id": "64c831b2-6032-4b2b-9ee1-1dbc57456347",
+		"name": "Pricing app collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Pricing",
+			"item": [],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Pricing",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "59368331-fecf-49f9-8984-627453fe2f54",
+						"exec": [
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Chart data retrieved successfully\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "uctdmsId",
+						"value": "567928",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"carColour\": \"White Pearl Mica\",\n    \"carMake\": \"{{MakeName}}\",\n    \"carModel\": \"{{ModelName}}\",\n    \"city\": \"Bengaluru\",\n    \"fuel\": 0,\n    \"insuranceType\": 1,\n    \"mfdYear\": 2019,\n    \"mileage\": 255,\n    \"previousOwner\": 1,\n    \"quality\": 0,\n    \"transmission\": 0,\n    \"variant\": \"{{VariantName}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://toyotautrustbackend.azurewebsites.net/api/v1/seller/pricing-chart-Data",
+					"protocol": "https",
+					"host": [
+						"toyotautrustbackend",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"v1",
+						"seller",
+						"pricing-chart-Data"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
